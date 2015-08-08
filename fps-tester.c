@@ -134,8 +134,15 @@ int main()
 
         update_scene(&scene, dt);
 
-        draw_scene(&gui, &scene);
-        draw_text(&gui, window_title, 10, 10);
+        if (draw_scene(&gui, &scene) != SUCCESS)
+        {
+            goto_fail("Could not draw scene");
+        }
+
+        if (draw_text(&gui, window_title, 10, 10) != SUCCESS)
+        {
+            goto_fail("Could not draw status text");
+        }
 
         SDL_RenderPresent(gui.render);
         SDL_SetWindowTitle(gui.win, window_title);

@@ -1,6 +1,7 @@
 #include "gui.h"
 
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 
 #include "config.h"
 #include "entity.h"
@@ -17,6 +18,7 @@ result init_display(Display *disp, Scene *scene)
     SDL_Renderer *render = NULL;
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) goto_fail(SDL_GetError());
+    if (TTF_Init() != 0) goto_fail(TTF_GetError());
 
     win = SDL_CreateWindow(
             TITLE,
@@ -37,6 +39,7 @@ result init_display(Display *disp, Scene *scene)
 fail:
     if (render != NULL) SDL_DestroyRenderer(render);
     if (win != NULL) SDL_DestroyWindow(win);
+    TTF_Quit();
     SDL_Quit();
     return FAILURE;
 }
@@ -45,6 +48,7 @@ void quit_display(Display *disp)
 {
     if (disp->render != NULL) SDL_DestroyRenderer(disp->render);
     if (disp->win != NULL) SDL_DestroyWindow(disp->win);
+    TTF_Quit();
     SDL_Quit();
 }
 

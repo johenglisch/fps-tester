@@ -7,7 +7,7 @@ LDFLAGS ?= -g
 
 CFLAGS += -std=c99
 
-LDLIBS += -lSDL2 -lSDL2_image
+LDLIBS += -lSDL2 -lSDL2_image -lSDL2_ttf
 
 EXE = fps-tester
 SRC = fps-tester.c clock.c entity.c gui.c scene.c

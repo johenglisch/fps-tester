@@ -135,15 +135,9 @@ int main()
         update_scene(&scene, dt);
 
         draw_scene(&gui, &scene);
-
-        // TODO refactor and error handling
-        SDL_Surface *text = TTF_RenderText_Solid(gui.font, window_title, gui.font_colour);
-        SDL_Texture *txt_text = SDL_CreateTextureFromSurface(gui.render, text);
-        SDL_Rect r = { .x = 10, .y = 10, .w = text->w, text->h };
-        SDL_RenderCopy(gui.render, txt_text, NULL, &r);
+        draw_text(&gui, window_title, 10, 10);
 
         SDL_RenderPresent(gui.render);
-
         SDL_SetWindowTitle(gui.win, window_title);
 
         if (SDL_PollEvent(&event))

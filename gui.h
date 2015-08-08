@@ -35,6 +35,7 @@ result init_display(Display *disp, Scene *scene);
 void quit_display(Display *disp);
 
 result draw_scene(Display *disp, Scene *scene);
+result draw_text(Display *disp, const char *text, int x, int y);
 
 SDL_Texture *load_image(Display *disp, const char *filename);
 

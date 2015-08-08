@@ -126,6 +126,39 @@ fail:
 }
 
 
+result draw_text(Display *disp, const char *text, int x, int y)
+{
+    SDL_Surface *surface = NULL;
+    SDL_Texture *texture = NULL;
+    SDL_Rect dest;
+
+    surface = TTF_RenderText_Solid(disp->font, text, disp->font_colour);
+    if (surface == NULL) goto_fail(TTF_GetError());
+    texture = SDL_CreateTextureFromSurface(disp->render, surface);
+    if (texture == NULL) goto_fail(SDL_GetError());
+
+    dest.x = x;
+    dest.y = y;
+    dest.w = surface->w;
+    dest.h = surface->h;
+
+    if (SDL_RenderCopy(disp->render, texture, NULL, &dest) != 0)
+    {
+        goto_fail(SDL_GetError());
+    }
+
+    SDL_DestroyTexture(texture);
+    SDL_FreeSurface(surface);
+    return SUCCESS;
+
+fail:
+    if (texture != NULL) SDL_DestroyTexture(texture);
+    if (surface != NULL) SDL_FreeSurface(surface);
+    return FAILURE;
+}
+
+
+
 static inline Uint8 html_red(int html)
 {
     return (Uint8)((0xff0000 & html) >> 16);

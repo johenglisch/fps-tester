@@ -2,6 +2,7 @@
 #define GUI_H_
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 
 #include "scene.h"
 #include "error.h"
@@ -22,6 +23,7 @@ typedef struct
 {
     SDL_Window *win;
     SDL_Renderer *render;
+    TTF_Font *font;
 }
 Display;
 

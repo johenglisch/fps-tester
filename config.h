@@ -7,4 +7,6 @@
 #define TITLE "FPS Tester"
 #define TITLE_LEN 32
 
+#define FONT "./fonts/vera/Vera.ttf"
+
 #endif

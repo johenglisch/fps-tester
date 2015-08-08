@@ -1,7 +1,6 @@
 #include "gui.h"
 
 #include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
 
 #include "config.h"
 #include "entity.h"
@@ -16,6 +15,7 @@ result init_display(Display *disp, Scene *scene)
 {
     SDL_Window *win = NULL;
     SDL_Renderer *render = NULL;
+    TTF_Font *font = NULL;
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) goto_fail(SDL_GetError());
     if (TTF_Init() != 0) goto_fail(TTF_GetError());
@@ -32,8 +32,12 @@ result init_display(Display *disp, Scene *scene)
     render = SDL_CreateRenderer(win, -1, RENDERER_FLAGS);
     if (render == NULL) goto_fail(SDL_GetError());
 
+    font = TTF_OpenFont(FONT, 10);
+    if (font == NULL) goto_fail(TTF_GetError());
+
     disp->win = win;
     disp->render = render;
+    disp->font = font;
     return SUCCESS;
 
 fail:

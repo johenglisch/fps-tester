@@ -15,7 +15,7 @@
 #include "error.h"
 
 #define SMILEY_COUNT 7
-#define FPS_SETTINGS 5
+#define FPS_SETTINGS 6
 
 
 int main()
@@ -28,7 +28,7 @@ int main()
         .entities = NULL,
     };
 
-    int fps_list[FPS_SETTINGS] = { 15, 24, 30, 60, 120 };
+    int fps_list[FPS_SETTINGS] = { 15, 24, 30, 60, 75, 120 };
     ulong fps_index = 0;
     Clock clock =
     {

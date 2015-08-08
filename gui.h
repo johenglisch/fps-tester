@@ -24,6 +24,7 @@ typedef struct
     SDL_Window *win;
     SDL_Renderer *render;
     TTF_Font *font;
+    SDL_Color font_colour;
 }
 Display;
 

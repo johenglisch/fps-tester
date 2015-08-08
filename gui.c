@@ -32,12 +32,18 @@ result init_display(Display *disp, Scene *scene)
     render = SDL_CreateRenderer(win, -1, RENDERER_FLAGS);
     if (render == NULL) goto_fail(SDL_GetError());
 
-    font = TTF_OpenFont(FONT, 10);
+    font = TTF_OpenFont(FONT, 16);
     if (font == NULL) goto_fail(TTF_GetError());
+    TTF_SetFontStyle(font, TTF_STYLE_BOLD);
 
     disp->win = win;
     disp->render = render;
     disp->font = font;
+    disp->font_colour.r = 0xff;
+    disp->font_colour.b = 0x00;
+    disp->font_colour.g = 0x00;
+    disp->font_colour.a = 0x80;
+
     return SUCCESS;
 
 fail:

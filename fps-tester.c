@@ -128,14 +128,22 @@ int main()
         dt = next_tick(&clock);
         if (dt == 0) continue;
 
-        update_scene(&scene, dt);
-
-        draw_scene(&gui, &scene);
-        SDL_RenderPresent(gui.render);
-
         snprintf(
                 window_title, TITLE_LEN, TITLE " - %d/%d fps", 1000 / dt,
                 fps_list[fps_index]);
+
+        update_scene(&scene, dt);
+
+        draw_scene(&gui, &scene);
+
+        // TODO refactor and error handling
+        SDL_Surface *text = TTF_RenderText_Solid(gui.font, window_title, gui.font_colour);
+        SDL_Texture *txt_text = SDL_CreateTextureFromSurface(gui.render, text);
+        SDL_Rect r = { .x = 10, .y = 10, .w = text->w, text->h };
+        SDL_RenderCopy(gui.render, txt_text, NULL, &r);
+
+        SDL_RenderPresent(gui.render);
+
         SDL_SetWindowTitle(gui.win, window_title);
 
         if (SDL_PollEvent(&event))

@@ -94,8 +94,6 @@ result draw_scene(Display *disp, Scene *scene)
         current = current->next;
     }
 
-    SDL_RenderPresent(disp->render);
-
     return SUCCESS;
 
 fail:

@@ -129,7 +129,9 @@ int main()
         if (dt == 0) continue;
 
         update_scene(&scene, dt);
+
         draw_scene(&gui, &scene);
+        SDL_RenderPresent(gui.render);
 
         snprintf(
                 window_title, TITLE_LEN, TITLE " - %d/%d fps", 1000 / dt,

@@ -47,6 +47,7 @@ result init_display(Display *disp, Scene *scene)
     return SUCCESS;
 
 fail:
+    if (font != NULL) TTF_CloseFont(font);
     if (render != NULL) SDL_DestroyRenderer(render);
     if (win != NULL) SDL_DestroyWindow(win);
     TTF_Quit();
@@ -56,6 +57,7 @@ fail:
 
 void quit_display(Display *disp)
 {
+    if (disp->font != NULL) TTF_CloseFont(disp->font);
     if (disp->render != NULL) SDL_DestroyRenderer(disp->render);
     if (disp->win != NULL) SDL_DestroyWindow(disp->win);
     TTF_Quit();

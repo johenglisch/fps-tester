@@ -1,5 +1,5 @@
-Fps-test
-========
+Fps-tester
+==========
 
 
 ## Description ##
@@ -15,9 +15,9 @@ higher than the refresh rate of your monitor have no effect.
 
 The programme uses the following keybindings:
 
- * `Q` or `ESC`: Quit programme
  * `+`: Increase frame-rate
  * `-`: Decrease frame-rate
+ * `Q` or `ESC`: Quit programme
 
 
 ## License ##

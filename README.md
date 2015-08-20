@@ -20,6 +20,14 @@ The programme uses the following keybindings:
  * `Q` or `ESC`: Quit programme
 
 
+## Dependencies ##
+
+ * `libsdl2`
+ * `libsdl2_image`
+ * `libsdl2_ttf`
+ * `imagemagick`
+
+
 ## License ##
 
 The programme uses the MIT license which can be found in the accompanying
